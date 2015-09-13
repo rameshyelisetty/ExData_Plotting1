@@ -47,6 +47,12 @@ plot(dataSet1$Time1, dataSet1$Sub_metering_3,
      main="Global Active Power",
      col="blue",
      ylim=c(0,40))
+par(new=T)
+
+legend(x="topright", legend=c("Sub_metering1", "Sub_metering2", "Sub_metering3"),
+       col = c(1:3),
+       lty = "solid")
+
 par(new=F)
 
 
