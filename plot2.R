@@ -24,7 +24,7 @@ dataSet1 <- cbind(dataSet1, Time1)
 
 # PROCESS
 
-# plot1 - Histogram
+# plot2 - Line
 plot(dataSet1$Time1, dataSet1$Global_active_power, 
      type = "l",
      xlab="Date-Time",
@@ -37,4 +37,4 @@ dev.copy(png, file="plot2.png") ## Copy to png device/file
 # CLEANUP, ...no TRACE
 
 dev.off() ## Close the device
-#rm(dataSet1) ## Close dataset
+rm(dataSet1) ## Close dataset
