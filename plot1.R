@@ -1,6 +1,6 @@
 # Initial Code, with library("sqldf"), and use read.csv.sql; but, this function doesnt seem to work with na.strings = "?"
 # so... explore later
-# get back to simple read.csv, computer has enough memory to handle the records
+# get back to simple read.csv, 6GB RAM must be has enough memory to handle the records
 
 # DATA PREPERATION
 
@@ -29,6 +29,9 @@ xlab="Global Active Power(killowatts)",
 main="Global Active Power")
 
 # OUTPUT TO DEVICE
-
 dev.copy(png, file="plot1.png") ## Copy to png device/file
+
+# CLEANUP, ...no TRACE
+
 dev.off() ## Close the device
+rm(dataSet1) ## Close dataset

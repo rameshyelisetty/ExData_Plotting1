@@ -1,6 +1,6 @@
 # Initial Code, with library("sqldf"), and use read.csv.sql; but, this function doesnt seem to work with na.strings = "?"
 # so... explore later
-# get back to simple read.csv, computer has enough memory to handle the records
+# get back to simple read.csv, 6GB RAM must be enough memory to handle the records
 
 # DATA PREPERATION
 
@@ -20,16 +20,24 @@ Time1 <- paste(dataSet1$Date, dataSet1$Time, sep=" ", Collapse = NULL)
 Time1<- as.POSIXlt(Time1,format="%d/%m/%Y %H:%M:%S")
 dataSet1 <- cbind(dataSet1, Time1)
 
+x <- range(dataSet1$Time1)
+y <- range(dataSet1$Global_active_power)
+
 # DATA-FRAME READY
 
 # PROCESS
 
 # plot2 - Line
-plot(dataSet1$Time1, dataSet1$Global_active_power, 
-     type = "l",
+
+# Setup the plot
+plot(x, y,
+     type = "n",
      xlab="Date-Time",
      ylab="Global Active Power(killowatts)",
      main="Global Active Power")
+
+lines(dataSet1$Time1, dataSet1$Global_active_power, 
+     type = "l")
 
 # OUTPUT TO DEVICE
 dev.copy(png, file="plot2.png") ## Copy to png device/file

@@ -30,36 +30,45 @@ dataSet1 <- cbind(dataSet1, Time1)
 par(mfcol=c(2,2))
 
 # plot2
-plot(dataSet1$Time1, dataSet1$Global_active_power, 
-     type = "l",
+# Setup the plot
+x <- range(dataSet1$Time1)
+y <- range(dataSet1$Global_active_power)
+
+plot(x, y,
+     type = "n",
      xlab="Date-Time",
      ylab="Global Active Power(killowatts)",
      main="Global Active Power")
 
+lines(dataSet1$Time1, dataSet1$Global_active_power, 
+      type = "l")
+
 # Plot3
-plot(dataSet1$Time1, dataSet1$Sub_metering_1, 
-     type = "l",
+x <- range(dataSet1$Time1)
+y <- range(c(dataSet1$Sub_metering_1,dataSet1$Sub_metering_2,dataSet1$Sub_metering_3))
+
+plot(x, y,
+     type = "n",
      xlab="Date-Time",
-     ylab="Energy Sub-meter",
+     ylab="Global Active Power(killowatts)",
      main="Global Active Power",
      ylim=c(0,40))
-par(new=T)
-plot(dataSet1$Time1, dataSet1$Sub_metering_2, 
-     type = "l",
-     xlab="Date-Time",
-     ylab="Energy Sub-meter",
-     main="Global Active Power",
-     col="red",
-     ylim=c(0,40))
-par(new=T)
-plot(dataSet1$Time1, dataSet1$Sub_metering_3, 
-     type = "l",
-     xlab="Date-Time",
-     ylab="Energy Sub-meter",
-     main="Global Active Power",
-     col="blue",
-     ylim=c(0,40))
-par(new=F)
+
+lines(dataSet1$Time1, dataSet1$Sub_metering_1, 
+      type = "l")
+lines(dataSet1$Time1, dataSet1$Sub_metering_2, 
+      type = "l",
+      col="red")
+lines(dataSet1$Time1, dataSet1$Sub_metering_3, 
+      type = "l",
+      col="blue")
+
+legend(x="topright", legend=c("Sub_metering1", "Sub_metering2", "Sub_metering3"),
+       col = c(1:3),
+       lty = "solid", 
+       lwd = c(1,1),
+       cex = 0.5,
+       y.intersp=0.20)
 
 # NewPlot1
 plot(dataSet1$Time1, dataSet1$Voltage, 
