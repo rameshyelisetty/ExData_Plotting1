@@ -9,7 +9,7 @@ powerDataFile <- "household_power_consumption.txt"
 dataSet0 <- read.csv(powerDataFile,sep=";",header=T, na.strings="?")
 
 # Filter the data set to the given date criteria - 1/2/2007 and 2/2/2007
-dataSet1 = dataSet0[dataSet0$Date == '2/2/2007' | dataSet0$Date == '1/2/2007',]
+dataSet1 <- dataSet0[dataSet0$Date == '2/2/2007' | dataSet0$Date == '1/2/2007',]
 
 # get rid of the initial dataset
 rm(dataSet0)
@@ -46,7 +46,8 @@ lines(dataSet1$Time1, dataSet1$Sub_metering_3,
      type = "l",
      col="blue")
 
-legend(x="topright", legend=c("Sub_metering1", "Sub_metering2", "Sub_metering3"),
+legend(x="topright", 
+       legend=c("Sub_metering1", "Sub_metering2", "Sub_metering3"),
        col = c(1:3),
        lty = "solid")
 
