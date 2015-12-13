@@ -1,7 +1,3 @@
-# Initial Code, with library("sqldf"), and use read.csv.sql; but, this function doesnt seem to work with na.strings = "?"
-# so... explore later
-# get back to simple read.csv, 6GB RAM must be enough memory to handle the records
-
 # DATA PREPERATION
 
 # Load data from file, create initial dataset - dataSet0
@@ -33,7 +29,7 @@ y <- range(dataSet1$Global_active_power)
 plot(x, y,
      type = "n",
      xlab="Date-Time",
-     ylab="Global Active Power(killowatts)",
+     ylab="Global Active Power (killowatts)",
      main="Global Active Power")
 
 lines(dataSet1$Time1, dataSet1$Global_active_power, 

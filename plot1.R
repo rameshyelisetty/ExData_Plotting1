@@ -1,7 +1,3 @@
-# Initial Code, with library("sqldf"), and use read.csv.sql; but, this function doesnt seem to work with na.strings = "?"
-# so... explore later
-# get back to simple read.csv, 6GB RAM must be has enough memory to handle the records
-
 # DATA PREPERATION
 
 # Load data from file, create initial dataset - dataSet0
@@ -25,7 +21,7 @@ dataSet1 <- transform(dataSet1, Date = as.Date(Date,"%d/%m/%Y"), Time = format(s
 hist(dataSet1$Global_active_power,
 col="red",
 ylim=c(0,1200),
-xlab="Global Active Power(killowatts)",
+xlab="Global Active Power (killowatts)",
 main="Global Active Power")
 
 # OUTPUT TO DEVICE
