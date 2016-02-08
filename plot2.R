@@ -5,7 +5,8 @@ powerDataFile <- "household_power_consumption.txt"
 dataSet0 <- read.csv(powerDataFile,sep=";",header=T, na.strings="?")
 
 # Filter the data set to the given date criteria - 1/2/2007 and 2/2/2007
-dataSet1 <- dataSet0[dataSet0$Date == '2/2/2007' | dataSet0$Date == '1/2/2007',]
+# dataSet1 <- dataSet0[dataSet0$Date == '2/2/2007' | dataSet0$Date == '1/2/2007',]
+dataSet1 <- subset(dataSet0, Date == '2/2/2007' | Date == '1/2/2007')
 
 # get rid of the initial dataset
 rm(dataSet0)
@@ -16,9 +17,6 @@ Time1 <- paste(dataSet1$Date, dataSet1$Time, sep=" ", Collapse = NULL)
 Time1<- as.POSIXlt(Time1,format="%d/%m/%Y %H:%M:%S")
 dataSet1 <- cbind(dataSet1, Time1)
 
-x <- range(dataSet1$Time1)
-y <- range(dataSet1$Global_active_power)
-
 # DATA-FRAME READY
 
 # PROCESS
@@ -26,14 +24,18 @@ y <- range(dataSet1$Global_active_power)
 # plot2 - Line
 
 # Setup the plot
-plot(x, y,
+with(dataSet1, 
+     {
+plot(Time1, Global_active_power,
      type = "n",
      xlab="Date-Time",
-     ylab="Global Active Power (killowatts)",
-     main="Global Active Power")
+     ylab="Global Active Power (in killowatts)",
+     main="Global Active Power");
 
-lines(dataSet1$Time1, dataSet1$Global_active_power, 
+lines(Time1, Global_active_power, 
      type = "l")
+}
+)
 
 # OUTPUT TO DEVICE
 dev.copy(png, file="plot2.png") ## Copy to png device/file
